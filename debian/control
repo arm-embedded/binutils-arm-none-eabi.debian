@@ -1,0 +1,15 @@
+Source: binutils-arm-none-eabi
+Section: devel
+Priority: extra
+Maintainer: Keith Packard <keithp@keithp.com>
+Build-Depends:  debhelper (>= 8.0.0),
+		binutils-source,
+		autotools-dev
+Standards-Version: 3.9.4
+
+Package: binutils-arm-none-eabi
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: GNU assembler, linker and binary utilities for ARM cortex -m0 and -m3 chips
+ Bare metal binutils for embedded ARM chips using the cortex-m0 and
+ cortex-m3 architecture
