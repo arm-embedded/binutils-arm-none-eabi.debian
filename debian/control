@@ -3,7 +3,7 @@ Section: devel
 Priority: extra
 Maintainer: Keith Packard <keithp@keithp.com>
 Build-Depends: binutils-source, debhelper (>= 8.0.0), autotools-dev,
-	bison, flex, gettext, texinfo, dejagnu (>= 1.4.2-1.1), quilt,
+	bison, flex, gettext, texinfo, dejagnu (>= 1.4.2-1.1),
 	python3, file, xz-utils, lsb-release, zlib1g-dev
 Standards-Version: 3.9.4
 
