@@ -21,18 +21,21 @@ buildflags=$(shell dpkg-buildflags --export=configure)
 
 configure_flags = \
     --target=$(target) \
-    --exec-prefix=\$${prefix}/lib \
-    --bindir=\$${prefix}/bin \
-    --infodir=\$${prefix}/share/doc/$(package)/info \
-    --htmldir=\$${prefix}/share/doc/$(package)/html \
-    --pdfdir=\$${prefix}/share/doc/$(package)/pdf \
+    --prefix=/usr/lib \
+    --bindir=/usr/bin \
+    --libdir=/usr/lib/arm-none-eabi \
+    --infodir=/usr/share/doc/$(package)/info \
+    --htmldir=/usr/share/doc/$(package)/html \
+    --pdfdir=/usr/share/doc/$(package)/pdf \
+    --mandir=/usr/share/man \
     --disable-nls \
+    --disable-lto \
     --enable-plugins \
     "--with-pkgversion=$(deb_version)" \
     $(buildflags)
 
 %:
-	dh $@ -D$(upstream_dir) -Bbuild --with autotools-dev
+	dh $@ -D$(upstream_dir) -Bbuild --with autotools-dev --parallel
 
 $(unpack_stamp):
 	tar xf $(binutils_dir)/binutils-*.tar.*

@@ -1,3 +1,9 @@
+binutils-arm-none-eabi (3) unstable; urgency=low
+
+  * Move ldscripts to /usr/lib/arm-none-eabi
+
+ -- Keith Packard <keithp@keithp.com>  Tue, 15 Oct 2013 23:43:18 -0700
+
 binutils-arm-none-eabi (2) unstable; urgency=low
 
   * Fix lintian errors
