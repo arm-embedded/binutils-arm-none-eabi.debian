@@ -18,6 +18,9 @@ Build-Depends:
  lsb-release,
  zlib1g-dev
 Standards-Version: 3.9.5
+HomePage: https://sourceware.org/binutils/
+Vcs-Git: git://anonscm.debian.org/collab-maint/binutils-arm-none-eabi.git
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/binutils-arm-none-eabi.git
 
 Package: binutils-arm-none-eabi
 Architecture: any

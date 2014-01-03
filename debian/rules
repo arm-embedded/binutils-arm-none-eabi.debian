@@ -53,4 +53,4 @@ override_dh_auto_clean:
 	rm -rf $(upstream_dir) build $(stampdir)
 
 override_dh_installchangelogs:
-	install -o 0 -g 0 -p -m644 debian/changelog debian/binutils-arm-none-eabi/usr/share/doc/binutils-arm-none-eabi/changelog.Debian
+	dh_installchangelogs $(upstream_dir)/ChangeLog
