@@ -1,3 +1,15 @@
+binutils-arm-none-eabi (4) unstable; urgency=medium
+
+  * Bumped Standard-Version to 3.9.5 (no changes required)
+  * Add myself as Maintainer
+  * Improvements on package Description
+  * Enable interwork support
+  * Add HomePage and Vcs* fields
+  * Fix target installchangelogs
+  * New upstream release (2.24)
+
+ -- Agustin Henze <tin@debian.org>  Fri, 03 Jan 2014 13:48:29 -0300
+
 binutils-arm-none-eabi (3) unstable; urgency=low
 
   * Move ldscripts to /usr/lib/arm-none-eabi
