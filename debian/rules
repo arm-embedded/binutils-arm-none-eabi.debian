@@ -18,6 +18,7 @@ upstream_dir=binutils-$(deb_upstream_version)
 unpack_stamp=$(stampdir)/unpack
 
 buildflags=$(shell dpkg-buildflags --export=configure)
+BUILT_USING := $(shell dpkg-query -f '$${source:Package} (= $${source:Version}), ' -W binutils-source)
 
 configure_flags = \
 	--target=$(target) \
@@ -47,7 +48,7 @@ override_dh_auto_configure: $(unpack_stamp)
 	dh_auto_configure -D$(upstream_dir) -Bbuild -- $(configure_flags)
 
 override_dh_gencontrol:
-	dh_gencontrol -a -- -v$(deb_version) -Vlocal:Version=$(deb_upstream_version) -Vbinutils:Version=$(source_version)
+	dh_gencontrol -a -- -v$(deb_version) -Vlocal:Version=$(deb_upstream_version) -Vbinutils:Version=$(source_version) -VBuilt-Using="$(BUILT_USING)"
 
 override_dh_auto_clean:
 	rm -rf $(upstream_dir) build $(stampdir)
