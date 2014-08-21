@@ -1,3 +1,9 @@
+binutils-arm-none-eabi (6) UNRELEASED; urgency=medium
+
+  * Add myself to Uploaders.
+
+ -- Thomas Preud'homme <thomas.preudhomme@arm.com>  Thu, 21 Aug 2014 09:20:37 +0000
+
 binutils-arm-none-eabi (5) unstable; urgency=medium
 
   * New upstream release (2.24.51)
