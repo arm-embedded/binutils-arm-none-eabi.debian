@@ -16,6 +16,7 @@ base_version := $(shell echo $(deb_version) | sed -e 's/\([1-9]\.[0-9]\).*-.*/\1
 upstream_dir=binutils-$(deb_upstream_version)
 
 unpack_stamp=$(stampdir)/unpack
+tar_stamp=$(stampdir)/tar
 
 buildflags=$(shell dpkg-buildflags --export=configure)
 BUILT_USING := $(shell dpkg-query -f '$${source:Package} (= $${source:Version}), ' -W binutils-source)
@@ -38,7 +39,16 @@ configure_flags = \
 %:
 	dh $@ -D$(upstream_dir) -Bbuild --with autotools-dev --parallel
 
-$(unpack_stamp):
+$(unpack_stamp): $(tar_stamp)
+	set -ex; \
+		cd binutils-*; \
+		for patch in ../debian/patches/[0-9]*.patch; do \
+			echo Applying patch "$$patch"; \
+			patch -p1 < "$$patch"; \
+		done
+	touch $@
+
+$(tar_stamp):
 	tar xf $(binutils_dir)/binutils-*.tar.*
 	mkdir -p $(stampdir)
 	cp /usr/share/doc/binutils-source/copyright debian/copyright

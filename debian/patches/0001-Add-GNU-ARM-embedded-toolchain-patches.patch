@@ -1,0 +1,533 @@
+diff --git a/bfd/ChangeLog.arm b/bfd/ChangeLog.arm
+new file mode 100644
+index 0000000..d54d76d
+--- /dev/null
++++ b/bfd/ChangeLog.arm
+@@ -0,0 +1,74 @@
++2014-01-02  Joey Ye  <joey.ye@arm.com>
++
++	Backport from mainline
++	2013-03-30  Alan Modra  <amodra@gmail.com>
++
++	PR ld/15323
++	* elf-m10300.c (mn10300_elf_check_relocs): Set non_ir_ref for
++	global symbols referenced by relocs.
++	* elf32-arm.c (elf32_arm_check_relocs): Likewise.
++	* elf32-bfin.c (bfin_check_relocs): Likewise.
++	* elf32-cr16.c (cr16_elf_check_relocs): Likewise.
++	* elf32-cris.c (cris_elf_check_relocs): Likewise.
++	* elf32-d10v.c (elf32_d10v_check_relocs): Likewise.
++	* elf32-dlx.c (elf32_dlx_check_relocs): Likewise.
++	* elf32-fr30.c (fr30_elf_check_relocs): Likewise.
++	* elf32-frv.c (elf32_frv_check_relocs): Likewise.
++	* elf32-hppa.c (elf32_hppa_check_relocs): Likewise.
++	* elf32-i370.c (i370_elf_check_relocs): Likewise.
++	* elf32-iq2000.c (iq2000_elf_check_relocs): Likewise.
++	* elf32-lm32.c (lm32_elf_check_relocs): Likewise.
++	* elf32-m32c.c (m32c_elf_check_relocs): Likewise.
++	* elf32-m32r.c (m32r_elf_check_relocs): Likewise.
++	* elf32-m68hc1x.c (elf32_m68hc11_check_relocs): Likewise.
++	* elf32-m68k.c (elf_m68k_check_relocs): Likewise.
++	* elf32-mcore.c (mcore_elf_check_relocs): Likewise.
++	* elf32-microblaze.c (microblaze_elf_check_relocs): Likewise.
++	* elf32-moxie.c (moxie_elf_check_relocs): Likewise.
++	* elf32-msp430.c (elf32_msp430_check_relocs): Likewise.
++	* elf32-mt.c (mt_elf_check_relocs): Likewise.
++	* elf32-openrisc.c (openrisc_elf_check_relocs): Likewise.
++	* elf32-ppc.c (ppc_elf_check_relocs): Likewise.
++	* elf32-rl78.c (rl78_elf_check_relocs): Likewise.
++	* elf32-s390.c (elf_s390_check_relocs): Likewise.
++	* elf32-score.c (s3_bfd_score_elf_check_relocs): Likewise.
++	* elf32-score7.c (s7_bfd_score_elf_check_relocs): Likewise.
++	* elf32-sh.c (sh_elf_check_relocs): Likewise.
++	* elf32-tic6x.c (elf32_tic6x_check_relocs): Likewise.
++	* elf32-tilepro.c (tilepro_elf_check_relocs): Likewise.
++	* elf32-v850.c (v850_elf_check_relocs): Likewise.
++	* elf32-vax.c (elf_vax_check_relocs): Likewise.
++	* elf32-xstormy16.c (xstormy16_elf_check_relocs): Likewise.
++	* elf32-xtensa.c (elf_xtensa_check_relocs): Likewise.
++	* elf64-aarch64.c (elf64_aarch64_check_relocs): Likewise.
++	* elf64-alpha.c (elf64_alpha_check_relocs): Likewise.
++	* elf64-hppa.c (elf64_hppa_check_relocs): Likewise.
++	* elf64-ia64-vms.c (elf64_ia64_check_relocs): Likewise.
++	* elf64-mmix.c (mmix_elf_check_relocs): Likewise.
++	* elf64-ppc.c (ppc64_elf_check_relocs): Likewise.
++	* elf64-s390.c (elf_s390_check_relocs): Likewise.
++	* elf64-sh64.c (sh_elf64_check_relocs): Likewise.
++	* elfnn-ia64.c (elfNN_ia64_check_relocs): Likewise.
++	* elfxx-sparc.c (_bfd_sparc_elf_check_relocs): Likewise.
++	* elfxx-tilegx.c (tilegx_elf_check_relocs): Likewise.
++	* elfxx-mips.c (_bfd_mips_elf_check_relocs): Likewise.  Don't
++	test indirect/warning links for NULL.
++
++2013-07-30  Terry Guo  <terry.guo@arm.com>
++
++	Backport from mainline
++	2013-07-18  Terry Guo  <terry.guo@arm.com>
++
++	* elf32-arm.c (arm_type_of_stub): Don't use ST_BRANCH_TO_ARM for
++	thumb only targets.
++	(elf32_arm_final_link_relocate): Likewise.
++
++2013-07-24  Terry Guo  <terry.guo@arm.com>
++
++	Backport from mainline
++	2012-10-13  H.J. Lu  <hongjiu.lu@intel.com>
++
++	* Makefile.am (LIBDL): Replace -ldl with @lt_cv_dlopen_libs@.
++	* configure.in (lt_cv_dlopen_libs): AC_SUBST.
++	* Makefile.in: Regenerated.
++	* configure: Likewise.
+diff --git a/bfd/doc/ChangeLog.arm b/bfd/doc/ChangeLog.arm
+new file mode 100644
+index 0000000..a18c1ea
+--- /dev/null
++++ b/bfd/doc/ChangeLog.arm
+@@ -0,0 +1,4 @@
++2014-09-30  Terry Guo  <terry.guo@arm.com>
++
++	* bfd.texinfo: Sync some directives with trunk to enable
++	build with 14.04.
+diff --git a/gas/ChangeLog.arm b/gas/ChangeLog.arm
+new file mode 100644
+index 0000000..ed33618
+--- /dev/null
++++ b/gas/ChangeLog.arm
+@@ -0,0 +1,33 @@
++2014-09-23  Hale Wang  <hale.wang@arm.com>
++	    Terry Guo  <terry.guo@arm.com>
++
++	* doc/c-arc.texi: Replace @table with @itemize to enable build
++	on latest Ubuntu 14.04.
++	* doc/c-arm.texi: Likewise.
++	* doc/c-mips.texi: Likewise.
++	* doc/c-score.texi: Likewise.
++	* doc/c-tic54x.texi: Likewise.
++
++2014-07-31  Terry Guo  <terry.guo@arm.com>
++
++	* config/tc-arm.c (arm_fpus): Add two new fpu names fpv5-sp-d16 and
++	fpv5-d16.
++	(do_vfp_nsyn_cvt_fpv8): Generate error when use D register for S
++	register only target like FPv5-SP-D16.
++	(do_neon_cvttb_1): Ditto.
++	(do_vfp_nsyn_fpv8): Ditto.
++	(do_vrint_1): Ditto.
++	* doc/c-arm.texi: Document new fpu names.
++
++2014-07-31  Terry Guo  <terry.guo@arm.com>
++
++	* config/tc-arm.c (arm_cpus): Add new cpu name cortex-m7.
++	* doc/c-arm.texi: Document new cpu names cortex-m7.
++
++2014-07-28  Terry Guo  <terry.guo@arm.com>
++
++	Backport from mainline
++	2014-01-17  Will Newton  <will.newton@linaro.org>
++
++	* config/tc-arm.c (do_vfp_nsyn_cvt_fpv8): Set OP to 1
++	for the s32.f64 flavours of VCVT.
+diff --git a/gas/config/tc-arm.c b/gas/config/tc-arm.c
+index e3e7ef2..c455067 100644
+--- a/gas/config/tc-arm.c
++++ b/gas/config/tc-arm.c
+@@ -14665,6 +14665,13 @@ do_vfp_nsyn_cvt_fpv8 (enum neon_cvt_flavour flavour,
+   int sz, op;
+   int rm;
+ 
++  /* Targets like FPv5-SP-D16 don't support FP v8 instructions with
++     D register operands.  */
++  if (flavour == neon_cvt_flavour_s32_f64
++      || flavour == neon_cvt_flavour_u32_f64)
++    constraint (!ARM_CPU_HAS_FEATURE (cpu_variant, fpu_vfp_ext_v1),
++		_(BAD_FPU));
++
+   set_it_insn_type (OUTSIDE_IT_INSN);
+ 
+   switch (flavour)
+@@ -14929,11 +14936,21 @@ do_neon_cvttb_1 (bfd_boolean t)
+     }
+   else if (neon_check_type (2, rs, N_F16, N_F64 | N_VFP).type != NT_invtype)
+     {
++      /* The VCVTB and VCVTT instructions with D-register operands
++         don't work for SP only targets.  */
++      constraint (!ARM_CPU_HAS_FEATURE (cpu_variant, fpu_vfp_ext_v1),
++		  _(BAD_FPU));
++
+       inst.error = NULL;
+       do_neon_cvttb_2 (t, /*to=*/TRUE, /*is_double=*/TRUE);
+     }
+   else if (neon_check_type (2, rs, N_F64 | N_VFP, N_F16).type != NT_invtype)
+     {
++      /* The VCVTB and VCVTT instructions with D-register operands
++         don't work for SP only targets.  */
++      constraint (!ARM_CPU_HAS_FEATURE (cpu_variant, fpu_vfp_ext_v1),
++		  _(BAD_FPU));
++
+       inst.error = NULL;
+       do_neon_cvttb_2 (t, /*to=*/FALSE, /*is_double=*/TRUE);
+     }
+@@ -16060,6 +16077,12 @@ do_neon_ldx_stx (void)
+ static void
+ do_vfp_nsyn_fpv8 (enum neon_shape rs)
+ {
++  /* Targets like FPv5-SP-D16 don't support FP v8 instructions with
++     D register operands.  */
++  if (neon_shape_class[rs] == SC_DOUBLE)
++    constraint (!ARM_CPU_HAS_FEATURE (cpu_variant, fpu_vfp_ext_v1),
++		_(BAD_FPU));
++
+   NEON_ENCODE (FPV8, inst);
+ 
+   if (rs == NS_FFF)
+@@ -16105,6 +16128,12 @@ do_vrint_1 (enum neon_cvt_mode mode)
+   if (rs == NS_NULL)
+     return;
+ 
++  /* Targets like FPv5-SP-D16 don't support FP v8 instructions with
++     D register operands.  */
++  if (neon_shape_class[rs] == SC_DOUBLE)
++    constraint (!ARM_CPU_HAS_FEATURE (cpu_variant, fpu_vfp_ext_v1),
++		_(BAD_FPU));
++
+   et = neon_check_type (2, rs, N_EQK | N_VFP, N_F32 | N_F64 | N_KEY | N_VFP);
+   if (et.type != NT_invtype)
+     {
+@@ -24023,6 +24052,7 @@ static const struct arm_cpu_option_table arm_cpus[] =
+   ARM_CPU_OPT ("cortex-r7",	ARM_ARCH_V7R_IDIV,
+ 						 FPU_ARCH_VFP_V3D16,
+ 								  "Cortex-R7"),
++  ARM_CPU_OPT ("cortex-m7",	ARM_ARCH_V7EM,	 FPU_NONE,	  "Cortex-M7"),
+   ARM_CPU_OPT ("cortex-m4",	ARM_ARCH_V7EM,	 FPU_NONE,	  "Cortex-M4"),
+   ARM_CPU_OPT ("cortex-m3",	ARM_ARCH_V7M,	 FPU_NONE,	  "Cortex-M3"),
+   ARM_CPU_OPT ("cortex-m1",	ARM_ARCH_V6SM,	 FPU_NONE,	  "Cortex-M1"),
+@@ -24191,6 +24221,8 @@ static const struct arm_option_fpu_value_table arm_fpus[] =
+   {"vfpv4",		FPU_ARCH_VFP_V4},
+   {"vfpv4-d16",		FPU_ARCH_VFP_V4D16},
+   {"fpv4-sp-d16",	FPU_ARCH_VFP_V4_SP_D16},
++  {"fpv5-d16",		FPU_ARCH_VFP_V5D16},
++  {"fpv5-sp-d16",	FPU_ARCH_VFP_V5_SP_D16},
+   {"neon-vfpv4",	FPU_ARCH_NEON_VFP_V4},
+   {"fp-armv8",		FPU_ARCH_VFP_ARMV8},
+   {"neon-fp-armv8",	FPU_ARCH_NEON_VFP_ARMV8},
+diff --git a/gas/doc/c-arm.texi b/gas/doc/c-arm.texi
+index b4b2d95..dd5c5c4 100644
+--- a/gas/doc/c-arm.texi
++++ b/gas/doc/c-arm.texi
+@@ -123,6 +123,7 @@ recognized:
+ @code{cortex-r4f},
+ @code{cortex-r5},
+ @code{cortex-r7},
++@code{cortex-m7},
+ @code{cortex-m4},
+ @code{cortex-m3},
+ @code{cortex-m1},
+@@ -247,6 +248,8 @@ The following format options are recognized:
+ @code{vfpv4},
+ @code{vfpv4-d16},
+ @code{fpv4-sp-d16},
++@code{fpv5-sp-d16},
++@code{fpv5-d16},
+ @code{fp-armv8},
+ @code{arm1020t},
+ @code{arm1020e},
+diff --git a/gas/testsuite/ChangeLog.arm b/gas/testsuite/ChangeLog.arm
+new file mode 100644
+index 0000000..daae703
+--- /dev/null
++++ b/gas/testsuite/ChangeLog.arm
+@@ -0,0 +1,17 @@
++2014-07-31  Terry Guo  <terry.guo@arm.com>
++
++	* gas/arm/armv7e-m+fpv5-d16.s: New.
++	* gas/arm/armv7e-m+fpv5-d16.d: Likewise.
++	* gas/arm/armv7e-m+fpv5-sp-d16.s: Likewise.
++	* gas/arm/armv7e-m+fpv5-sp-d16.d: Likewise.
++
++2014-07-28  Terry Guo  <terry.guo@arm.com>
++
++	Backport from mainline
++	2012-10-11  Kyrylo Tkachov  <kyrylo.tkachov@arm.com>
++
++	* gas/arm/armv8-a+fp.d: Use preferred form of vrint instruction
++	variants for disassembly.
++	* gas/arm/armv8-a+fp.s: Likewise.
++	* gas/arm/armv8-a+simd.d: Likewise.
++	* gas/arm/armv8-a+simd.s: Likewise.
+diff --git a/gas/testsuite/gas/arm/armv7e-m+fpv5-d16.d b/gas/testsuite/gas/arm/armv7e-m+fpv5-d16.d
+new file mode 100644
+index 0000000..2951b1b
+--- /dev/null
++++ b/gas/testsuite/gas/arm/armv7e-m+fpv5-d16.d
+@@ -0,0 +1,60 @@
++#name: Valid v7e-m+fpv5-d16
++#objdump: -dr --prefix-addresses --show-raw-insn
++
++.*: +file format .*arm.*
++
++Disassembly of section .text:
++0[0-9a-f]+ <[^>]+> fe00 0a00 	vseleq.f32	s0, s0, s0
++0[0-9a-f]+ <[^>]+> fe50 0aa0 	vselvs.f32	s1, s1, s1
++0[0-9a-f]+ <[^>]+> fe2f fa0f 	vselge.f32	s30, s30, s30
++0[0-9a-f]+ <[^>]+> fe7f faaf 	vselgt.f32	s31, s31, s31
++0[0-9a-f]+ <[^>]+> fe00 0b00 	vseleq.f64	d0, d0, d0
++0[0-9a-f]+ <[^>]+> fe18 8b08 	vselvs.f64	d8, d8, d8
++0[0-9a-f]+ <[^>]+> fe2f fb0f 	vselge.f64	d15, d15, d15
++0[0-9a-f]+ <[^>]+> fe3a ab0a 	vselgt.f64	d10, d10, d10
++0[0-9a-f]+ <[^>]+> fe80 0a00 	vmaxnm.f32	s0, s0, s0
++0[0-9a-f]+ <[^>]+> fec0 0aa0 	vmaxnm.f32	s1, s1, s1
++0[0-9a-f]+ <[^>]+> fe8f fa0f 	vmaxnm.f32	s30, s30, s30
++0[0-9a-f]+ <[^>]+> fecf faaf 	vmaxnm.f32	s31, s31, s31
++0[0-9a-f]+ <[^>]+> fe80 0b00 	vmaxnm.f64	d0, d0, d0
++0[0-9a-f]+ <[^>]+> fe88 8b08 	vmaxnm.f64	d8, d8, d8
++0[0-9a-f]+ <[^>]+> fe8f fb0f 	vmaxnm.f64	d15, d15, d15
++0[0-9a-f]+ <[^>]+> fe8a ab0a 	vmaxnm.f64	d10, d10, d10
++0[0-9a-f]+ <[^>]+> fe80 0a40 	vminnm.f32	s0, s0, s0
++0[0-9a-f]+ <[^>]+> fec0 0ae0 	vminnm.f32	s1, s1, s1
++0[0-9a-f]+ <[^>]+> fe8f fa4f 	vminnm.f32	s30, s30, s30
++0[0-9a-f]+ <[^>]+> fecf faef 	vminnm.f32	s31, s31, s31
++0[0-9a-f]+ <[^>]+> fe80 0b40 	vminnm.f64	d0, d0, d0
++0[0-9a-f]+ <[^>]+> fe88 8b48 	vminnm.f64	d8, d8, d8
++0[0-9a-f]+ <[^>]+> fe8f fb4f 	vminnm.f64	d15, d15, d15
++0[0-9a-f]+ <[^>]+> fe8a ab4a 	vminnm.f64	d10, d10, d10
++0[0-9a-f]+ <[^>]+> febc 0ac0 	vcvta.s32.f32	s0, s0
++0[0-9a-f]+ <[^>]+> fefd 0ae0 	vcvtn.s32.f32	s1, s1
++0[0-9a-f]+ <[^>]+> febe fa4f 	vcvtp.u32.f32	s30, s30
++0[0-9a-f]+ <[^>]+> feff fa6f 	vcvtm.u32.f32	s31, s31
++0[0-9a-f]+ <[^>]+> febc 0bc0 	vcvta.s32.f64	s0, d0
++0[0-9a-f]+ <[^>]+> fefd 0bc8 	vcvtn.s32.f64	s1, d8
++0[0-9a-f]+ <[^>]+> febe fb4f 	vcvtp.u32.f64	s30, d15
++0[0-9a-f]+ <[^>]+> feff fb4a 	vcvtm.u32.f64	s31, d10
++0[0-9a-f]+ <[^>]+> eeb6 0ac0 	vrintz.f32	s0, s0
++0[0-9a-f]+ <[^>]+> eef7 0a60 	vrintx.f32	s1, s1
++0[0-9a-f]+ <[^>]+> eeb6 fa4f 	vrintr.f32	s30, s30
++0[0-9a-f]+ <[^>]+> feb8 0a40 	vrinta.f32	s0, s0
++0[0-9a-f]+ <[^>]+> fef9 0a60 	vrintn.f32	s1, s1
++0[0-9a-f]+ <[^>]+> feba fa4f 	vrintp.f32	s30, s30
++0[0-9a-f]+ <[^>]+> fefb fa6f 	vrintm.f32	s31, s31
++0[0-9a-f]+ <[^>]+> eeb6 0bc0 	vrintz.f64	d0, d0
++0[0-9a-f]+ <[^>]+> eeb7 1b41 	vrintx.f64	d1, d1
++0[0-9a-f]+ <[^>]+> eeb6 ab4a 	vrintr.f64	d10, d10
++0[0-9a-f]+ <[^>]+> feb8 0b40 	vrinta.f64	d0, d0
++0[0-9a-f]+ <[^>]+> feb9 1b41 	vrintn.f64	d1, d1
++0[0-9a-f]+ <[^>]+> feba ab4a 	vrintp.f64	d10, d10
++0[0-9a-f]+ <[^>]+> febb ab4a 	vrintm.f64	d10, d10
++0[0-9a-f]+ <[^>]+> eeb3 0bc0 	vcvtt.f16.f64	s0, d0
++0[0-9a-f]+ <[^>]+> eef3 0b48 	vcvtb.f16.f64	s1, d8
++0[0-9a-f]+ <[^>]+> eeb3 fbcf 	vcvtt.f16.f64	s30, d15
++0[0-9a-f]+ <[^>]+> eef3 fb4a 	vcvtb.f16.f64	s31, d10
++0[0-9a-f]+ <[^>]+> eeb2 0bc0 	vcvtt.f64.f16	d0, s0
++0[0-9a-f]+ <[^>]+> eeb2 8b60 	vcvtb.f64.f16	d8, s1
++0[0-9a-f]+ <[^>]+> eeb2 fbcf 	vcvtt.f64.f16	d15, s30
++0[0-9a-f]+ <[^>]+> eeb2 ab6f 	vcvtb.f64.f16	d10, s31
+diff --git a/gas/testsuite/gas/arm/armv7e-m+fpv5-d16.s b/gas/testsuite/gas/arm/armv7e-m+fpv5-d16.s
+new file mode 100644
+index 0000000..06fba06
+--- /dev/null
++++ b/gas/testsuite/gas/arm/armv7e-m+fpv5-d16.s
+@@ -0,0 +1,60 @@
++	.syntax unified
++	.text
++	.arch armv7e-m
++	.fpu fpv5-d16
++
++	.thumb
++	vseleq.f32	s0, s0, s0
++	vselvs.f32	s1, s1, s1
++	vselge.f32	s30, s30, s30
++	vselgt.f32	s31, s31, s31
++	vseleq.f64	d0, d0, d0
++	vselvs.f64	d8, d8, d8
++	vselge.f64	d15, d15, d15
++	vselgt.f64	d10, d10, d10
++	vmaxnm.f32	s0, s0, s0
++	vmaxnm.f32	s1, s1, s1
++	vmaxnm.f32	s30, s30, s30
++	vmaxnm.f32	s31, s31, s31
++	vmaxnm.f64	d0, d0, d0
++	vmaxnm.f64	d8, d8, d8
++	vmaxnm.f64	d15, d15, d15
++	vmaxnm.f64	d10, d10, d10
++	vminnm.f32	s0, s0, s0
++	vminnm.f32	s1, s1, s1
++	vminnm.f32	s30, s30, s30
++	vminnm.f32	s31, s31, s31
++	vminnm.f64	d0, d0, d0
++	vminnm.f64	d8, d8, d8
++	vminnm.f64	d15, d15, d15
++	vminnm.f64	d10, d10, d10
++	vcvta.s32.f32	s0, s0
++	vcvtn.s32.f32	s1, s1
++	vcvtp.u32.f32	s30, s30
++	vcvtm.u32.f32	s31, s31
++	vcvta.s32.f64	s0, d0
++	vcvtn.s32.f64	s1, d8
++	vcvtp.u32.f64	s30, d15
++	vcvtm.u32.f64	s31, d10
++	vrintz.f32	s0, s0
++        vrintx.f32	s1, s1
++        vrintr.f32	s30, s30
++	vrinta.f32	s0, s0
++	vrintn.f32	s1, s1
++	vrintp.f32	s30, s30
++	vrintm.f32	s31, s31
++	vrintz.f64	d0, d0
++        vrintx.f64	d1, d1
++        vrintr.f64	d10, d10
++	vrinta.f64	d0, d0
++	vrintn.f64	d1, d1
++	vrintp.f64	d10, d10
++	vrintm.f64	d10, d10
++	vcvtt.f16.f64	s0, d0
++	vcvtb.f16.f64	s1, d8
++	vcvtt.f16.f64	s30, d15
++	vcvtb.f16.f64	s31, d10
++	vcvtt.f64.f16	d0, s0
++	vcvtb.f64.f16	d8, s1
++	vcvtt.f64.f16	d15, s30
++	vcvtb.f64.f16	d10, s31
+diff --git a/gas/testsuite/gas/arm/armv7e-m+fpv5-sp-d16.d b/gas/testsuite/gas/arm/armv7e-m+fpv5-sp-d16.d
+new file mode 100644
+index 0000000..84ed3b0
+--- /dev/null
++++ b/gas/testsuite/gas/arm/armv7e-m+fpv5-sp-d16.d
+@@ -0,0 +1,28 @@
++#objdump: -dr --prefix-addresses --show-raw-insn
++
++.*: +file format .*arm.*
++
++Disassembly of section .text:
++0[0-9a-f]+ <[^>]+> fe00 0a00 	vseleq.f32	s0, s0, s0
++0[0-9a-f]+ <[^>]+> fe50 0aa0 	vselvs.f32	s1, s1, s1
++0[0-9a-f]+ <[^>]+> fe2f fa0f 	vselge.f32	s30, s30, s30
++0[0-9a-f]+ <[^>]+> fe7f faaf 	vselgt.f32	s31, s31, s31
++0[0-9a-f]+ <[^>]+> fe80 0a00 	vmaxnm.f32	s0, s0, s0
++0[0-9a-f]+ <[^>]+> fec0 0aa0 	vmaxnm.f32	s1, s1, s1
++0[0-9a-f]+ <[^>]+> fe8f fa0f 	vmaxnm.f32	s30, s30, s30
++0[0-9a-f]+ <[^>]+> fecf faaf 	vmaxnm.f32	s31, s31, s31
++0[0-9a-f]+ <[^>]+> fe80 0a40 	vminnm.f32	s0, s0, s0
++0[0-9a-f]+ <[^>]+> fec0 0ae0 	vminnm.f32	s1, s1, s1
++0[0-9a-f]+ <[^>]+> fe8f fa4f 	vminnm.f32	s30, s30, s30
++0[0-9a-f]+ <[^>]+> fecf faef 	vminnm.f32	s31, s31, s31
++0[0-9a-f]+ <[^>]+> febc 0ac0 	vcvta.s32.f32	s0, s0
++0[0-9a-f]+ <[^>]+> fefd 0ae0 	vcvtn.s32.f32	s1, s1
++0[0-9a-f]+ <[^>]+> febe fa4f 	vcvtp.u32.f32	s30, s30
++0[0-9a-f]+ <[^>]+> feff fa6f 	vcvtm.u32.f32	s31, s31
++0[0-9a-f]+ <[^>]+> eeb6 0ac0 	vrintz.f32	s0, s0
++0[0-9a-f]+ <[^>]+> eef7 0a60 	vrintx.f32	s1, s1
++0[0-9a-f]+ <[^>]+> eeb6 fa4f 	vrintr.f32	s30, s30
++0[0-9a-f]+ <[^>]+> feb8 0a40 	vrinta.f32	s0, s0
++0[0-9a-f]+ <[^>]+> fef9 0a60 	vrintn.f32	s1, s1
++0[0-9a-f]+ <[^>]+> feba fa4f 	vrintp.f32	s30, s30
++0[0-9a-f]+ <[^>]+> fefb fa6f 	vrintm.f32	s31, s31
+diff --git a/gas/testsuite/gas/arm/armv7e-m+fpv5-sp-d16.s b/gas/testsuite/gas/arm/armv7e-m+fpv5-sp-d16.s
+new file mode 100644
+index 0000000..0fee290
+--- /dev/null
++++ b/gas/testsuite/gas/arm/armv7e-m+fpv5-sp-d16.s
+@@ -0,0 +1,29 @@
++	.syntax unified
++	.text
++	.arch armv7e-m
++	.fpu fpv5-sp-d16
++
++	.thumb
++	vseleq.f32	s0, s0, s0
++	vselvs.f32	s1, s1, s1
++	vselge.f32	s30, s30, s30
++	vselgt.f32	s31, s31, s31
++	vmaxnm.f32	s0, s0, s0
++	vmaxnm.f32	s1, s1, s1
++	vmaxnm.f32	s30, s30, s30
++	vmaxnm.f32	s31, s31, s31
++	vminnm.f32	s0, s0, s0
++	vminnm.f32	s1, s1, s1
++	vminnm.f32	s30, s30, s30
++	vminnm.f32	s31, s31, s31
++	vcvta.s32.f32	s0, s0
++	vcvtn.s32.f32	s1, s1
++	vcvtp.u32.f32	s30, s30
++	vcvtm.u32.f32	s31, s31
++	vrintz.f32	s0, s0
++        vrintx.f32	s1, s1
++        vrintr.f32	s30, s30
++	vrinta.f32	s0, s0
++	vrintn.f32	s1, s1
++	vrintp.f32	s30, s30
++	vrintm.f32	s31, s31
+diff --git a/include/opcode/arm.h b/include/opcode/arm.h
+index b7e4cca..916451c 100644
+--- a/include/opcode/arm.h
++++ b/include/opcode/arm.h
+@@ -153,6 +153,8 @@
+ #define FPU_VFP_V4D16	(FPU_VFP_V3D16 | FPU_VFP_EXT_FP16 | FPU_VFP_EXT_FMA)
+ #define FPU_VFP_V4	(FPU_VFP_V3 | FPU_VFP_EXT_FP16 | FPU_VFP_EXT_FMA)
+ #define FPU_VFP_V4_SP_D16 (FPU_VFP_V3xD | FPU_VFP_EXT_FP16 | FPU_VFP_EXT_FMA)
++#define FPU_VFP_V5D16	(FPU_VFP_V4D16 | FPU_VFP_EXT_ARMV8)
++#define FPU_VFP_V5_SP_D16 (FPU_VFP_V4_SP_D16 | FPU_VFP_EXT_ARMV8)
+ #define FPU_VFP_ARMV8	(FPU_VFP_V4 | FPU_VFP_EXT_ARMV8)
+ #define FPU_NEON_ARMV8	(FPU_NEON_EXT_V1 | FPU_NEON_EXT_FMA | FPU_NEON_EXT_ARMV8)
+ #define FPU_CRYPTO_ARMV8 (FPU_CRYPTO_EXT_ARMV8)
+@@ -186,6 +188,8 @@
+ #define FPU_ARCH_VFP_V4 ARM_FEATURE(0, FPU_VFP_V4)
+ #define FPU_ARCH_VFP_V4D16 ARM_FEATURE(0, FPU_VFP_V4D16)
+ #define FPU_ARCH_VFP_V4_SP_D16 ARM_FEATURE(0, FPU_VFP_V4_SP_D16)
++#define FPU_ARCH_VFP_V5D16 ARM_FEATURE(0, FPU_VFP_V5D16)
++#define FPU_ARCH_VFP_V5_SP_D16 ARM_FEATURE(0, FPU_VFP_V5_SP_D16)
+ #define FPU_ARCH_NEON_VFP_V4 \
+   ARM_FEATURE(0, FPU_VFP_V4 | FPU_NEON_EXT_V1 | FPU_NEON_EXT_FMA)
+ #define FPU_ARCH_VFP_ARMV8 ARM_FEATURE(0, FPU_VFP_ARMV8)
+diff --git a/ld/ChangeLog.arm b/ld/ChangeLog.arm
+new file mode 100644
+index 0000000..8582095
+--- /dev/null
++++ b/ld/ChangeLog.arm
+@@ -0,0 +1,4 @@
++2014-09-30  Terry Guo  <terry.guo@arm.com>
++
++	* ld.texinfo: Sync some directives with trunk to enable
++	build with 14.04.
+diff --git a/ld/testsuite/ChangeLog.arm b/ld/testsuite/ChangeLog.arm
+new file mode 100644
+index 0000000..21fc87c
+--- /dev/null
++++ b/ld/testsuite/ChangeLog.arm
+@@ -0,0 +1,25 @@
++2014-07-28  Terry Guo  <terry.guo@arm.com>
++
++	* ld-arm/arm-elf.exp (thumb-bl-lks-sym.s, thumb-b-lks-sym.s):
++	Adjust to work for 2.23 branch.
++
++2013-07-30  Terry Guo  <terry.guo@arm.com>
++
++	Backport from mainline
++	2013-07-18  Terry Guo  <terry.guo@arm.com>
++
++	* ld-arm/thumb-b-lks-sym.d: Updated to be more flexible.
++	* ld-arm/thumb-bl-lks-sym.d: Likewise.
++
++2013-07-30  Terry Guo  <terry.guo@arm.com>
++
++	Backport from mainline
++	2013-06-13  Terry Guo  <terry.guo@arm.com>
++
++	PR ld/15302
++	* ld-arm/branch-lks-sym.ld: New script.
++	* ld-arm/thumb-b-lks-sym.s: New test.
++	* ld-arm/thumb-b-lks-sym.d: Expected disassembly.
++	* ld-arm/thumb-bl-lks-sym.s: New test.
++	* ld-arm/thumb-bl-lks-sym.d: Expected disassembly.
++	* ld-arm/arm-elf.exp: Run the new tests.
+diff --git a/opcodes/ChangeLog.arm b/opcodes/ChangeLog.arm
+new file mode 100644
+index 0000000..6ddcb3e
+--- /dev/null
++++ b/opcodes/ChangeLog.arm
+@@ -0,0 +1,7 @@
++2014-07-28  Terry Guo  <terry.guo@arm.com>
++
++	Backport from mainline
++	2012-10-11  Kyrylo Tkachov  <kyrylo.tkachov@arm.com>
++
++	* arm-dis.c: Use preferred form of vrint instruction variants
++	for disassembly.
