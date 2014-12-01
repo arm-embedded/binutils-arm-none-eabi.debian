@@ -1,9 +1,14 @@
-binutils-arm-none-eabi (6) UNRELEASED; urgency=medium
+binutils-arm-none-eabi (6) experimental; urgency=medium
 
+  [ Thomas Preud'homme ]
   * New upstream release: 4.8-2014-q3-update.
   * Add myself to Uploaders.
 
- -- Thomas Preud'homme <thomas.preudhomme@arm.com>  Thu, 21 Aug 2014 09:20:37 +0000
+  [ Agustin Henze ]
+  * Disable testsuite
+  * Bumped Standard-Version to 3.9.6 (no changes required)
+
+ -- Agustin Henze <tin@debian.org>  Mon, 01 Dec 2014 09:38:49 -0300
 
 binutils-arm-none-eabi (5) unstable; urgency=medium
 
