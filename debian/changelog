@@ -1,3 +1,9 @@
+binutils-arm-none-eabi (8~bpo8+1) jessie-backports; urgency=medium
+
+  * Rebuild for jessie-backports.
+
+ -- Agustin Henze <tin@debian.org>  Wed, 17 Feb 2016 11:17:12 -0300
+
 binutils-arm-none-eabi (8) unstable; urgency=medium
 
   * New upstream release
