@@ -1,3 +1,9 @@
+binutils-arm-none-eabi (9) unstable; urgency=medium
+
+  * Rebuild to catch up the last upstream release.
+
+ -- Agustin Henze <tin@debian.org>  Fri, 28 Oct 2016 06:54:22 -0300
+
 binutils-arm-none-eabi (8) unstable; urgency=medium
 
   * New upstream release
