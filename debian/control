@@ -6,7 +6,7 @@ Uploaders: Keith Packard <keithp@keithp.com>,
            Thomas Preud'homme <thomas.preudhomme@arm.com>
 Build-Depends:
  binutils-source,
- debhelper (>= 8.0.0),
+ debhelper (>= 9.0.0),
  autotools-dev,
  bison,
  flex,
