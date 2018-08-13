@@ -37,7 +37,7 @@ configure_flags = \
 	$(buildflags)
 
 %:
-	dh $@ -D$(upstream_dir) -Bbuild --with autotools-dev --parallel
+	dh $@ -D$(upstream_dir) -Bbuild --parallel
 
 $(untar_stamp):
 	tar xf $(binutils_dir)/binutils-*.tar.*
