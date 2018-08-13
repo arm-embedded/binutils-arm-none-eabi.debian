@@ -1,3 +1,16 @@
+binutils-arm-none-eabi (10) unstable; urgency=medium
+
+  * Bump debhelper compat to 9
+  * Replace the obsolete priority extra for optional
+  * Use specific version libisl-0.18-dev
+  * Bump Standards-Version to 4.2.0 (No changes needed)
+  * Update Vcs-* fields pointing to salsa
+  * Update package Description
+  * Remove `--with autotools-dev`, it's run by default
+  * Add (autopkg)tests
+
+ -- Agustin Henze <tin@debian.org>  Mon, 13 Aug 2018 10:15:46 +0200
+
 binutils-arm-none-eabi (9) unstable; urgency=medium
 
   * Rebuild to catch up the last upstream release.
