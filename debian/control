@@ -18,7 +18,7 @@ Build-Depends:
  xz-utils,
  lsb-release,
  zlib1g-dev,
- libisl-dev,
+ libisl-0.18-dev,
  libcloog-isl-dev,
 Standards-Version: 3.9.6
 HomePage: https://sourceware.org/binutils/
