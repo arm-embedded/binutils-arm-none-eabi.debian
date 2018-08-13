@@ -1,3 +1,33 @@
+binutils-arm-none-eabi (10) unstable; urgency=medium
+
+  * Bump debhelper compat to 9
+  * Replace the obsolete priority extra for optional
+  * Use specific version libisl-0.18-dev
+  * Bump Standards-Version to 4.2.0 (No changes needed)
+  * Update Vcs-* fields pointing to salsa
+  * Update package Description
+  * Remove `--with autotools-dev`, it's run by default
+  * Add (autopkg)tests
+
+ -- Agustin Henze <tin@debian.org>  Mon, 13 Aug 2018 10:15:46 +0200
+
+binutils-arm-none-eabi (9) unstable; urgency=medium
+
+  * Rebuild to catch up the last upstream release.
+
+ -- Agustin Henze <tin@debian.org>  Fri, 28 Oct 2016 06:54:22 -0300
+
+binutils-arm-none-eabi (8) unstable; urgency=medium
+
+  * New upstream release
+  * Remove patches (already applied on the new upstream release)
+  * debian/rules
+    - Remove unpack_stamp target
+    - Rename tar_stamp to untar_stamp
+    - Use system's zlib i.e. --with-system-zlib configure flag
+
+ -- Agustin Henze <tin@debian.org>  Wed, 17 Feb 2016 09:28:01 -0300
+
 binutils-arm-none-eabi (7) experimental; urgency=medium
 
   [ Thomas Preud'homme ]

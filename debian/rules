@@ -15,8 +15,7 @@ base_version := $(shell echo $(deb_version) | sed -e 's/\([1-9]\.[0-9]\).*-.*/\1
 
 upstream_dir=binutils-$(deb_upstream_version)
 
-unpack_stamp=$(stampdir)/unpack
-tar_stamp=$(stampdir)/tar
+untar_stamp=$(stampdir)/tar
 
 buildflags=$(shell dpkg-buildflags --export=configure)
 BUILT_USING := $(shell dpkg-query -f '$${source:Package} (= $${source:Version}), ' -W binutils-source)
@@ -33,28 +32,20 @@ configure_flags = \
 	--disable-nls \
 	--enable-plugins \
 	--enable-interwork \
+	--with-system-zlib \
 	"--with-pkgversion=$(deb_version)" \
 	$(buildflags)
 
 %:
-	dh $@ -D$(upstream_dir) -Bbuild --with autotools-dev --parallel
+	dh $@ -D$(upstream_dir) -Bbuild --parallel
 
-$(unpack_stamp): $(tar_stamp)
-	set -ex; \
-		cd binutils-*; \
-		for patch in ../debian/patches/[0-9]*.patch; do \
-			echo Applying patch "$$patch"; \
-			patch -p1 < "$$patch"; \
-		done
-	touch $@
-
-$(tar_stamp):
+$(untar_stamp):
 	tar xf $(binutils_dir)/binutils-*.tar.*
 	mkdir -p $(stampdir)
 	cp /usr/share/doc/binutils-source/copyright debian/copyright
 	touch $@
 
-override_dh_auto_configure: $(unpack_stamp)
+override_dh_auto_configure: $(untar_stamp)
 	dh_auto_configure -D$(upstream_dir) -Bbuild -- $(configure_flags)
 
 override_dh_gencontrol:
